@@ -9,16 +9,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <nav class="bg-emerald-700 text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-bold flex items-center gap-2">
-                <span>Masjid Taqwa</span>
-            </a>
-            <a href="/admin" class="bg-emerald-800 hover:bg-emerald-900 px-4 py-2 rounded-lg text-sm font-medium transition shadow-md border border-emerald-600">
-                Login Pengurus
-            </a>
-        </div>
-    </nav>
+    @include('components.navbar')
     
     <header class="bg-emerald-600 text-white pb-20 pt-10 rounded-b-[3rem] shadow-md relative overflow-hidden">
         <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">

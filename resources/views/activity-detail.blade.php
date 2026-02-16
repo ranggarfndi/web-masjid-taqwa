@@ -16,16 +16,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <nav class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="font-bold text-xl text-emerald-700 flex items-center gap-2">
-                Masjid Taqwa
-            </a>
-            <a href="/kegiatan" class="text-sm font-medium text-gray-500 hover:text-emerald-600 transition">
-                &larr; Lihat Semua Kegiatan
-            </a>
-        </div>
-    </nav>
+    @include('components.navbar')
 
     <main class="flex-grow">
         

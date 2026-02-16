@@ -8,14 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <nav class="bg-emerald-700 text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-lg font-bold flex items-center gap-2 hover:text-emerald-100 transition">
-                &larr; Kembali ke Beranda
-            </a>
-            <span class="font-semibold opacity-90">Transparansi Umat</span>
-        </div>
-    </nav>
+    @include('components.navbar')
 
     <header class="bg-white shadow-sm py-8 mb-8 border-b border-gray-200">
         <div class="container mx-auto px-4 text-center">

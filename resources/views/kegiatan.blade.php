@@ -8,14 +8,7 @@
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans flex flex-col min-h-screen">
 
-    <nav class="bg-emerald-700 text-white shadow-lg sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="/" class="text-xl font-bold flex items-center gap-2 hover:text-emerald-100 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" /></svg>
-                <span>Kembali ke Beranda</span>
-            </a>
-        </div>
-    </nav>
+    @include('components.navbar')
 
     <header class="bg-white border-b border-gray-200 py-12">
         <div class="container mx-auto px-4 text-center">
