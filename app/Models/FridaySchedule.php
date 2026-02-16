@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class PrayerSchedule extends Model
+class FridaySchedule extends Model
 {
     protected $fillable = [
-        'date', 'subuh', 'dzuhur', 'ashar', 'maghrib', 'isya'
+        'date', 'waktu', 'khatib', 'imam'
     ];
 
     protected $casts = [
