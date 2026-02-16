@@ -157,24 +157,86 @@
             </div>
         </section>
 
-        <section class="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-8 border-emerald-500 flex items-center justify-between transform hover:scale-[1.02] transition duration-300">
-                <div>
-                    <p class="text-gray-500 font-medium text-sm uppercase tracking-wide">Kas Masjid</p>
-                    <h3 class="text-3xl font-bold text-emerald-700 mt-1">Rp {{ number_format($saldoMasjid, 0, ',', '.') }}</h3>
+        <section class="max-w-5xl mx-auto space-y-8">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-l-8 border-emerald-500 flex items-center justify-between transform hover:scale-[1.02] transition duration-300">
+                    <div>
+                        <p class="text-gray-500 font-medium text-sm uppercase tracking-wide">Kas Masjid</p>
+                        <h3 class="text-3xl font-bold text-emerald-700 mt-1">Rp {{ number_format($saldoMasjid, 0, ',', '.') }}</h3>
+                    </div>
+                    <div class="bg-emerald-100 p-4 rounded-full text-emerald-600 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
                 </div>
-                <div class="bg-emerald-100 p-4 rounded-full text-emerald-600 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-l-8 border-yellow-500 flex items-center justify-between transform hover:scale-[1.02] transition duration-300">
+                    <div>
+                        <p class="text-gray-500 font-medium text-sm uppercase tracking-wide">Santunan Anak Yatim</p>
+                        <h3 class="text-3xl font-bold text-yellow-600 mt-1">Rp {{ number_format($saldoYatim, 0, ',', '.') }}</h3>
+                    </div>
+                    <div class="bg-yellow-100 p-4 rounded-full text-yellow-600 shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
                 </div>
             </div>
 
-            <div class="bg-white p-6 rounded-2xl shadow-lg border-l-8 border-yellow-500 flex items-center justify-between transform hover:scale-[1.02] transition duration-300">
-                <div>
-                    <p class="text-gray-500 font-medium text-sm uppercase tracking-wide">Santunan Anak Yatim</p>
-                    <h3 class="text-3xl font-bold text-yellow-600 mt-1">Rp {{ number_format($saldoYatim, 0, ',', '.') }}</h3>
+            <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                <div class="px-6 py-4 border-b border-gray-100 flex justify-between items-center bg-gray-50">
+                    <h3 class="font-bold text-gray-700 flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                        Riwayat Transaksi Terakhir
+                    </h3>
+                    <a href="/laporan-keuangan" class="text-xs font-bold text-emerald-600 hover:text-emerald-800 hover:underline uppercase tracking-wide transition">
+                        Lihat Semua Transaksi &rarr;
+                    </a>
                 </div>
-                <div class="bg-yellow-100 p-4 rounded-full text-yellow-600 shadow-sm">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                
+                <div class="divide-y divide-gray-100">
+                    @if(isset($latestFinances) && count($latestFinances) > 0)
+                        @foreach($latestFinances as $finance)
+                            <div class="p-4 hover:bg-gray-50 transition flex items-center justify-between group">
+                                <div class="flex items-start gap-4">
+                                    <div class="p-2 rounded-full shrink-0 {{ $finance->type == 'pemasukan' ? 'bg-green-100 text-green-600' : 'bg-red-100 text-red-600' }}">
+                                        @if($finance->type == 'pemasukan')
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 11l5-5m0 0l5 5m-5-5v12" /></svg>
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 13l-5 5m0 0l-5-5m5 5V6" /></svg>
+                                        @endif
+                                    </div>
+                                    
+                                    <div>
+                                        <p class="font-semibold text-gray-800 text-sm group-hover:text-emerald-700 transition">
+                                            {{ $finance->description }}
+                                        </p>
+                                        <div class="flex items-center gap-2 mt-1">
+                                            <span class="text-xs text-gray-400">
+                                                {{ \Carbon\Carbon::parse($finance->date)->isoFormat('D MMM Y') }}
+                                            </span>
+                                            <span class="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase border {{ $finance->category == 'masjid' ? 'bg-emerald-50 text-emerald-700 border-emerald-100' : 'bg-yellow-50 text-yellow-700 border-yellow-100' }}">
+                                                {{ ucfirst($finance->category) }}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-right">
+                                    <p class="font-bold text-sm md:text-base {{ $finance->type == 'pemasukan' ? 'text-green-600' : 'text-red-500' }}">
+                                        {{ $finance->type == 'pemasukan' ? '+' : '-' }} Rp {{ number_format($finance->amount, 0, ',', '.') }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="p-8 text-center text-gray-400 text-sm italic">
+                            Belum ada data transaksi terbaru.
+                        </div>
+                    @endif
                 </div>
             </div>
         </section>
