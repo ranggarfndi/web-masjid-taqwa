@@ -2,11 +2,16 @@
 
 namespace App\Filament\Resources\PrayerSchedules\Tables;
 
+use App\Models\PrayerSchedule;
 use Filament\Actions\BulkActionGroup;
+use Filament\Actions\DeleteAction;
 use Filament\Actions\DeleteBulkAction;
+// 1. Tambahkan Import ReplicateAction
 use Filament\Actions\EditAction;
-use Filament\Tables\Table;
+use Filament\Actions\ReplicateAction;
+use Filament\Forms\Components\DatePicker; // Import DatePicker untuk form popup
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Table;
 
 class PrayerSchedulesTable
 {
@@ -14,16 +19,13 @@ class PrayerSchedulesTable
     {
         return $table
             ->columns([
-                // Tanggal
                 TextColumn::make('date')
                     ->label('Tanggal')
                     ->date('d M Y')
                     ->sortable(),
 
-                // Waktu Sholat
                 TextColumn::make('subuh')->label('Subuh'),
                 
-                // Logika Dzuhur vs Jumat (Penting!)
                 TextColumn::make('dzuhur')
                     ->label('Dzuhur / Jumat')
                     ->state(function ($record) {
@@ -39,10 +41,34 @@ class PrayerSchedulesTable
             ->filters([
                 //
             ])
-            ->recordActions([
+            ->actions([
                 EditAction::make(),
+
+                // --- 2. TAMBAHKAN KODE INI ---
+                ReplicateAction::make()
+                    ->label('Duplikat') // Label tombol
+                    ->color('success')  // Warna hijau
+                    ->icon('heroicon-o-document-duplicate')
+                    ->modalHeading('Duplikat Jadwal Sholat')
+                    ->modalDescription('Salin jam sholat ini ke tanggal lain.')
+                    ->excludeAttributes(['date']) // JANGAN copy tanggal lama (karena tanggal harus unik)
+                    ->form([
+                        // Munculkan Form kecil meminta tanggal baru
+                        DatePicker::make('date')
+                            ->label('Jadwal Untuk Tanggal')
+                            ->required()
+                            ->unique('prayer_schedules', 'date') // Cek agar tidak bentrok
+                            ->default(now()->addDay()), // Default otomatis terisi 'Besok'
+                    ])
+                    ->beforeReplicaSaved(function (PrayerSchedule $replica, array $data) {
+                        // Simpan tanggal baru yang dipilih user ke data hasil copy
+                        $replica->date = $data['date'];
+                    }),
+                // -----------------------------
+
+                DeleteAction::make(),
             ])
-            ->toolbarActions([
+            ->bulkActions([
                 BulkActionGroup::make([
                     DeleteBulkAction::make(),
                 ]),
