@@ -100,3 +100,32 @@ Route::get('/laporan-keuangan', function () {
     
     return view('keuangan', compact('finances'));
 });
+
+/*
+|--------------------------------------------------------------------------
+| HALAMAN SEMUA KEGIATAN (ARSIP)
+|--------------------------------------------------------------------------
+*/
+Route::get('/kegiatan', function () {
+    // Ambil kegiatan, 9 per halaman
+    $activities = App\Models\Activity::latest()->paginate(9);
+    
+    return view('kegiatan', compact('activities'));
+});
+
+/*
+|--------------------------------------------------------------------------
+| HALAMAN DETAIL KEGIATAN
+|--------------------------------------------------------------------------
+*/
+Route::get('/kegiatan/{slug}', function ($slug) {
+    $activity = App\Models\Activity::where('slug', $slug)->firstOrFail();
+    
+    // Ambil 3 kegiatan terbaru LAINNYA untuk rekomendasi di bawah artikel
+    $relatedActivities = App\Models\Activity::where('id', '!=', $activity->id)
+        ->latest()
+        ->take(3)
+        ->get();
+
+    return view('activity-detail', compact('activity', 'relatedActivities'));
+});

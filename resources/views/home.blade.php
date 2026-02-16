@@ -244,7 +244,9 @@
         <section class="max-w-6xl mx-auto">
             <div class="flex items-center justify-between mb-8">
                 <h2 class="text-2xl font-bold text-gray-800 border-l-4 border-emerald-500 pl-4">Kegiatan Masjid</h2>
-                <a href="#" class="text-emerald-600 font-medium hover:underline text-sm">Lihat Semua &rarr;</a>
+                <a href="/kegiatan" class="text-emerald-600 font-medium hover:text-emerald-800 hover:underline text-sm transition flex items-center gap-1">
+                    Lihat Semua <span class="text-lg">&rarr;</span>
+                </a>
             </div>
 
             @if($activities->count() > 0)
@@ -252,38 +254,47 @@
                     @foreach($activities as $activity)
                         <article class="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-2xl transition duration-300 group flex flex-col h-full border border-gray-100">
                             <div class="h-56 overflow-hidden relative">
-                                <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition z-10"></div>
-                                @if($activity->image)
-                                    <img 
-                                        src="/baca-file/{{ $activity->image }}" 
-                                        alt="{{ $activity->title }}" 
-                                        class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
-                                    >
-                                @else
-                                    <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
+                                <a href="/kegiatan/{{ $activity->slug }}" class="block w-full h-full">
+                                    <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition z-10"></div>
+                                    
+                                    @if($activity->image)
+                                        <img 
+                                            src="/baca-file/{{ $activity->image }}" 
+                                            alt="{{ $activity->title }}" 
+                                            class="w-full h-full object-cover group-hover:scale-110 transition duration-700"
+                                        >
+                                    @else
+                                        <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                            </svg>
+                                        </div>
+                                    @endif
+                                    
+                                    <div class="absolute top-4 right-4 z-20">
+                                        <span class="bg-white/90 backdrop-blur text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
+                                            {{ \Carbon\Carbon::parse($activity->date)->format('d M Y') }}
+                                        </span>
                                     </div>
-                                @endif
-                                
-                                <div class="absolute top-4 right-4 z-20">
-                                    <span class="bg-white/90 backdrop-blur text-emerald-700 text-xs font-bold px-3 py-1.5 rounded-lg shadow-sm">
-                                        {{ \Carbon\Carbon::parse($activity->date)->format('d M Y') }}
-                                    </span>
-                                </div>
+                                </a>
                             </div>
                             
                             <div class="p-6 flex flex-col flex-grow">
                                 <h3 class="text-xl font-bold text-gray-800 leading-snug group-hover:text-emerald-700 transition mb-3 line-clamp-2">
-                                    <a href="#">{{ $activity->title }}</a>
+                                    <a href="/kegiatan/{{ $activity->slug }}">{{ $activity->title }}</a>
                                 </h3>
-                                <p class="text-gray-500 text-sm line-clamp-3 mb-4 flex-grow">
+                                
+                                <p class="text-gray-500 text-sm line-clamp-3 mb-4 flex-grow leading-relaxed">
                                     {{ Str::limit(strip_tags($activity->content), 100) }}
                                 </p>
+                                
                                 <div class="mt-auto pt-4 border-t border-gray-100">
-                                    <span class="text-sm font-semibold text-emerald-600 group-hover:translate-x-1 transition inline-flex items-center gap-1">
+                                    <a href="/kegiatan/{{ $activity->slug }}" class="text-sm font-semibold text-emerald-600 group-hover:translate-x-1 transition inline-flex items-center gap-1 hover:underline">
                                         Baca Selengkapnya 
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                                    </span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                        </svg>
+                                    </a>
                                 </div>
                             </div>
                         </article>
@@ -291,7 +302,10 @@
                 </div>
             @else
                 <div class="bg-gray-50 rounded-xl p-10 text-center border-2 border-dashed border-gray-200">
-                    <p class="text-gray-400 font-medium">Belum ada kegiatan terbaru yang diupload.</p>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto text-gray-300 mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                    </svg>
+                    <p class="text-gray-500 font-medium">Belum ada kegiatan terbaru yang diupload.</p>
                 </div>
             @endif
         </section>
