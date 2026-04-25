@@ -3,9 +3,7 @@
         <div class="flex justify-between items-center h-16">
             
             <a href="/" class="text-xl font-bold flex items-center gap-2 hover:text-emerald-100 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z" />
-                </svg>
+                <img src="{{ asset('images/logo-masjid.png') }}" alt="Logo Masjid" class="h-10 w-10 ">
                 <span>Masjid Taqwa</span>
             </a>
 
